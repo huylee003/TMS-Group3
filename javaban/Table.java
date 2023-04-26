@@ -417,3 +417,4 @@ public class Table extends javax.swing.JFrame {
     private javax.swing.JTextField txttentiec;
     // End of variables declaration//GEN-END:variables
 }
+dsdsdsadasdas
