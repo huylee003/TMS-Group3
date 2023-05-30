@@ -4,6 +4,8 @@
  */
 package javanhan_vien;
 
+import java.awt.Color;
+
 /**
  *
  * @author ADMIN
@@ -29,194 +31,190 @@ public class AddStaffForm extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
-        txtStaffid = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtFullname = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        cbxCountry = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
-        rdbMale = new javax.swing.JRadioButton();
-        rdbFemale = new javax.swing.JRadioButton();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtStaffid1 = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txaNote1 = new javax.swing.JTextArea();
+        jLabel14 = new javax.swing.JLabel();
+        txtFullname1 = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        btnCreate1 = new javax.swing.JButton();
+        cbxCountry1 = new javax.swing.JComboBox<>();
+        btnUpdate1 = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        btnDelete1 = new javax.swing.JButton();
+        rdbMale1 = new javax.swing.JRadioButton();
+        btnReset1 = new javax.swing.JButton();
+        rdbFemale1 = new javax.swing.JRadioButton();
+        jLabel18 = new javax.swing.JLabel();
+        chkSingle1 = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
-        chkSingle = new javax.swing.JCheckBox();
-        jLabel7 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txaNote = new javax.swing.JTextArea();
-        jSeparator2 = new javax.swing.JSeparator();
-        btnCreate = new javax.swing.JButton();
-        btnUpdate = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
-        btnReset = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Add New Staff");
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Staff ID");
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Staff ID");
+        jPanel8.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 79, -1));
 
-        txtStaffid.addActionListener(new java.awt.event.ActionListener() {
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Note");
+        jPanel8.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 37, -1));
+
+        txtStaffid1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtStaffidActionPerformed(evt);
+                txtStaffid1ActionPerformed(evt);
             }
         });
+        jPanel8.add(txtStaffid1, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 160, 630, -1));
 
-        jLabel3.setText("Fullname");
+        txaNote1.setColumns(20);
+        txaNote1.setRows(5);
+        jScrollPane2.setViewportView(txaNote1);
 
-        jLabel4.setText("Country");
+        jPanel8.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 630, 160));
 
-        cbxCountry.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Việt Nam", "Mỹ", "Tây Ban Nha", "Zimbabwe" }));
-        cbxCountry.addActionListener(new java.awt.event.ActionListener() {
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Fullname");
+        jPanel8.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, -1, -1));
+        jPanel8.add(txtFullname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 110, 630, -1));
+
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Country");
+        jPanel8.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
+
+        btnCreate1.setText("Create");
+        btnCreate1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxCountryActionPerformed(evt);
+                btnCreate1ActionPerformed(evt);
             }
         });
+        jPanel8.add(btnCreate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 500, -1, -1));
 
-        jLabel5.setText("Gender");
-
-        buttonGroup1.add(rdbMale);
-        rdbMale.setText("Male");
-
-        buttonGroup1.add(rdbFemale);
-        rdbFemale.setText("Female");
-
-        jLabel6.setText("Status");
-
-        chkSingle.setText("Single");
-        chkSingle.addActionListener(new java.awt.event.ActionListener() {
+        cbxCountry1.setForeground(new java.awt.Color(255, 255, 255));
+        cbxCountry1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "       Việt Nam", "Mỹ", "Tây Ban Nha", "Zimbabwe" }));
+        cbxCountry1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkSingleActionPerformed(evt);
+                cbxCountry1ActionPerformed(evt);
             }
         });
+        jPanel8.add(cbxCountry1, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 210, 630, -1));
 
-        jLabel7.setText("Note");
+        btnUpdate1.setText("Update");
+        jPanel8.add(btnUpdate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 500, -1, -1));
 
-        txaNote.setColumns(20);
-        txaNote.setRows(5);
-        jScrollPane1.setViewportView(txaNote);
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Gender");
+        jPanel8.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 41, -1));
 
-        btnCreate.setText("Create");
+        btnDelete1.setText("Delete");
+        jPanel8.add(btnDelete1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 500, -1, -1));
 
-        btnUpdate.setText("Update");
+        rdbMale1.setForeground(new java.awt.Color(255, 255, 255));
+        rdbMale1.setText("Male");
+        rdbMale1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdbMale1ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(rdbMale1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 98, -1));
 
-        btnDelete.setText("Delete");
+        btnReset1.setText("Reset");
+        jPanel8.add(btnReset1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 500, -1, -1));
 
-        btnReset.setText("Reset");
+        rdbFemale1.setForeground(new java.awt.Color(255, 255, 255));
+        rdbFemale1.setText("Female");
+        rdbFemale1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdbFemale1ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(rdbFemale1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 98, -1));
+
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("Status");
+        jPanel8.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, 37, -1));
+
+        chkSingle1.setForeground(new java.awt.Color(255, 255, 255));
+        chkSingle1.setText("Single");
+        chkSingle1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkSingle1ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(chkSingle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 85, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\ADMIN\\OneDrive\\Máy tính\\Đồ Án\\image 5.png")); // NOI18N
+        jPanel8.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 0, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\ADMIN\\OneDrive\\Máy tính\\Đồ Án\\image 4.png")); // NOI18N
+        jPanel8.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 400, 110, 140));
+
+        jLabel1.setBackground(new Color(0, 0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Phone Number");
+        jPanel8.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
+        jPanel8.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 630, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\ADMIN\\OneDrive\\Máy tính\\Đồ Án\\image 3.png")); // NOI18N
+        jPanel8.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ADMIN\\OneDrive\\Máy tính\\Đồ Án\\Frame 1.png")); // NOI18N
+        jPanel8.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, -1));
+
+        jLabel4.setText("jLabel4");
+        jPanel8.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(49, 49, 49)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbxCountry, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(chkSingle, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(rdbMale, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(rdbFemale, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jScrollPane1)
-                                    .addComponent(txtStaffid)
-                                    .addComponent(txtFullname)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(128, 128, 128)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(btnCreate)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnUpdate)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnDelete)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnReset)))
-                        .addGap(0, 23, Short.MAX_VALUE)))
-                .addContainerGap())
+            .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtStaffid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtFullname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(cbxCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rdbMale)
-                        .addComponent(rdbFemale)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(chkSingle))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCreate)
-                    .addComponent(btnUpdate)
-                    .addComponent(btnDelete)
-                    .addComponent(btnReset))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbxCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCountryActionPerformed
+    private void txtStaffid1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStaffid1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbxCountryActionPerformed
+    }//GEN-LAST:event_txtStaffid1ActionPerformed
 
-    private void txtStaffidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStaffidActionPerformed
+    private void btnCreate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreate1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtStaffidActionPerformed
+    }//GEN-LAST:event_btnCreate1ActionPerformed
 
-    private void chkSingleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSingleActionPerformed
+    private void cbxCountry1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCountry1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_chkSingleActionPerformed
+    }//GEN-LAST:event_cbxCountry1ActionPerformed
+
+    private void rdbMale1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbMale1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdbMale1ActionPerformed
+
+    private void rdbFemale1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbFemale1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdbFemale1ActionPerformed
+
+    private void chkSingle1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSingle1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkSingle1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,27 +253,32 @@ public class AddStaffForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCreate;
-    private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnReset;
-    private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton btnCreate1;
+    private javax.swing.JButton btnDelete1;
+    private javax.swing.JButton btnReset1;
+    private javax.swing.JButton btnUpdate1;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> cbxCountry;
-    private javax.swing.JCheckBox chkSingle;
+    private javax.swing.JComboBox<String> cbxCountry1;
+    private javax.swing.JCheckBox chkSingle1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JRadioButton rdbFemale;
-    private javax.swing.JRadioButton rdbMale;
-    private javax.swing.JTextArea txaNote;
-    private javax.swing.JTextField txtFullname;
-    private javax.swing.JTextField txtStaffid;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JRadioButton rdbFemale1;
+    private javax.swing.JRadioButton rdbMale1;
+    private javax.swing.JTextArea txaNote1;
+    private javax.swing.JTextField txtFullname1;
+    private javax.swing.JTextField txtStaffid1;
     // End of variables declaration//GEN-END:variables
 }

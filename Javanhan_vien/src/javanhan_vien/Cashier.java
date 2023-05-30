@@ -4,18 +4,91 @@
  */
 package javanhan_vien;
 
+import dbconnect.dbconnect;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+import java.awt.Color;
+import java.awt.Frame;
+import java.awt.Font;
+import javax.swing.JTable;
+import javax.swing.table.JTableHeader;
+
 /**
  *
  * @author ADMIN
  */
 public class Cashier extends javax.swing.JFrame {
-
+    Connection sos = null;
+    PreparedStatement sss = null;
+    ResultSet rs = null;
     /**
-     * Creates new form NewJFramenha_vien
+    
      */
     public Cashier() {
         initComponents();
+        sos = dbconnect.connect();
+        table();
+      jTable1.getTableHeader().setFont(new Font("Be Vietnam Pro", Font.BOLD, 16));
+        jTable1.getTableHeader().setOpaque(false);
+        jTable1.getTableHeader().setBackground(new Color(32, 136, 203));
+        jTable1.getTableHeader().setForeground(new Color(0, 0, 0));
+        jTable1.setRowHeight(25);
+    
     }
+    public void table() {
+         try 
+            {
+                String sql = "SELECT ename AS Name,eage AS Age ,egender AS Gender, ephone AS Number, ec AS Country, enote AS Note, eid AS ID FROM employees ";
+                sss = sos.prepareStatement(sql);
+                rs = sss.executeQuery();
+                jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            } catch (Exception e) 
+            {
+            }
+    }
+    public void tabledata()
+        {
+            int r = jTable1.getSelectedRow();
+            
+            String id = jTable1.getValueAt(r,1).toString();
+            String name = jTable1.getValueAt(r,2).toString();
+            String age = jTable1.getValueAt(r,3).toString();
+            String number = jTable1.getValueAt(r,4).toString();
+            String note = jTable1.getValueAt(r,5).toString();
+             
+            agebox.setText(age);
+            namebox.setText(name);
+            numberbox.setText(number);
+            idbox.setText(id);
+            notebox.setText(note);
+            
+        }
+    
+    public void update ()
+        {
+          String name = namebox.getText();
+          String gender = jComboBox1.getSelectedItem().toString();
+          String country = cbxCountry1.getSelectedItem().toString();
+          String age = agebox.getText();
+          String id = idbox.getText();
+          String number = numberbox.getText();
+          String note = notebox.getText();
+          
+                  
+            try 
+            {
+                String sql = "UPDATE employees SET ename = '"+name+"',enote ='"+note+"',egender ='"+gender+"',eage ='"+age+"',ephone ='"+number+"',ecountry ='"+country+"',eid = '"+id+"' WHERE eid = '"+id+"'";
+                sss = sos.prepareStatement(sql);
+                sss.execute();
+                JOptionPane.showMessageDialog(null,"Updated");
+            } catch (Exception e) 
+            {
+                JOptionPane.showMessageDialog(null,"Error");
+            }
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,6 +99,7 @@ public class Cashier extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFrame1 = new javax.swing.JFrame();
         jLabel1 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
@@ -61,9 +135,49 @@ public class Cashier extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         chkSingle = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jPanel6 = new javax.swing.JPanel();
+        btnStore2 = new javax.swing.JButton();
+        btnLoad2 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        deletebutton = new javax.swing.JToggleButton();
+        jLabel24 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        notebox = new javax.swing.JTextArea();
+        jLabel14 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        namebox = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        add = new javax.swing.JButton();
+        cbxCountry1 = new javax.swing.JComboBox<>();
+        up = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        agebox = new javax.swing.JTextField();
+        btnReset1 = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
+        chkSingle1 = new javax.swing.JCheckBox();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        numberbox = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Staff Management Form");
+        jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jFrame1.setTitle("Staff Management Form");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Staff ");
@@ -323,45 +437,252 @@ public class Cashier extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrame1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jFrame1Layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addGap(494, 494, 494)
                         .addComponent(jLabel1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrame1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jButton1))
                 .addGap(11, 11, 11)
                 .addComponent(jTabbedPane1))
         );
 
+        jButton2.setText("jButton2");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Staff Management Form");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Rectangle 1.png"))); // NOI18N
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, -1));
+
+        jTabbedPane2.setBackground(new java.awt.Color(51, 0, 102));
+        jTabbedPane2.setForeground(new java.awt.Color(255, 255, 255));
+        jTabbedPane2.setAutoscrolls(true);
+        jTabbedPane2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnStore2.setText("Store");
+        jPanel6.add(btnStore2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 500, -1, -1));
+
+        btnLoad2.setText("Load");
+        btnLoad2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoad2ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnLoad2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 500, 80, -1));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/image 1.png"))); // NOI18N
+        jLabel11.setText("jLabel4");
+        jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 10, 140, -1));
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/image 3.png"))); // NOI18N
+        jPanel6.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 390, -1, -1));
+
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/image 2.png"))); // NOI18N
+        jPanel6.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 410, 230, 130));
+
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/image 4.png"))); // NOI18N
+        jPanel6.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 20, 130, 170));
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jPanel6.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 15, -1, -1));
+
+        jTable1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Name", "Age", "Gender", "Number", "Note", "Country"
+            }
+        ));
+        jTable1.setGridColor(new java.awt.Color(15, 15, 86));
+        jScrollPane4.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(200);
+        }
+
+        jPanel6.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 870, 420));
+
+        deletebutton.setText("Delete");
+        deletebutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletebuttonActionPerformed(evt);
+            }
+        });
+        jPanel6.add(deletebutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 500, -1, -1));
+
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/List Stuff.png"))); // NOI18N
+        jPanel6.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 530));
+
+        jTextField1.setText("jTextField1");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
+
+        jLabel12.setText("jLabel12");
+        jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, -1, -1));
+
+        jTabbedPane2.addTab("                                                  List Stuff                                                 ", jPanel6);
+
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Note");
+        jPanel8.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 50, -1));
+
+        notebox.setBackground(new java.awt.Color(8, 8, 55));
+        notebox.setColumns(20);
+        notebox.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        notebox.setForeground(new java.awt.Color(255, 255, 255));
+        notebox.setRows(5);
+        jScrollPane2.setViewportView(notebox);
+
+        jPanel8.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 630, 160));
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Fullname");
+        jPanel8.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 130, -1));
+
+        namebox.setBackground(new java.awt.Color(8, 8, 55));
+        namebox.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        namebox.setForeground(new java.awt.Color(255, 255, 255));
+        namebox.setSelectedTextColor(new java.awt.Color(0, 0, 0));
+        namebox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameboxActionPerformed(evt);
+            }
+        });
+        jPanel8.add(namebox, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 630, -1));
+
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel27.setText("Age");
+        jPanel8.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, -1, -1));
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Country");
+        jPanel8.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
+
+        add.setText("Create");
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
+        jPanel8.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 500, -1, -1));
+
+        cbxCountry1.setBackground(new java.awt.Color(8, 8, 55));
+        cbxCountry1.setEditable(true);
+        cbxCountry1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cbxCountry1.setForeground(new java.awt.Color(255, 255, 255));
+        cbxCountry1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "       Việt Nam", "Mỹ", "Tây Ban Nha", "Zimbabwe" }));
+        cbxCountry1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxCountry1ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(cbxCountry1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 630, 30));
+
+        up.setText("Update");
+        jPanel8.add(up, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 500, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Gender");
+        jPanel8.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 70, -1));
+
+        agebox.setBackground(new java.awt.Color(8, 8, 55));
+        agebox.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        agebox.setForeground(new java.awt.Color(255, 255, 255));
+        agebox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ageboxActionPerformed(evt);
+            }
+        });
+        jPanel8.add(agebox, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 630, -1));
+
+        btnReset1.setText("Reset");
+        jPanel8.add(btnReset1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 500, -1, -1));
+
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("Status");
+        jPanel8.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, 37, 20));
+
+        chkSingle1.setForeground(new java.awt.Color(255, 255, 255));
+        chkSingle1.setText("Single");
+        chkSingle1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkSingle1ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(chkSingle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 85, -1));
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/image 5.png"))); // NOI18N
+        jPanel8.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, -10, -1, -1));
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/image 9.png"))); // NOI18N
+        jPanel8.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 400, 110, 140));
+
+        jLabel25.setBackground(new Color(0, 0, 0, 0));
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel25.setText("Phone");
+        jPanel8.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, -1, -1));
+
+        numberbox.setBackground(new java.awt.Color(8, 8, 55));
+        numberbox.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        numberbox.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel8.add(numberbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 630, -1));
+
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/image 10.png"))); // NOI18N
+        jPanel8.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, -1, -1));
+
+        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Frame 1 (1).png"))); // NOI18N
+        jPanel8.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -8, 960, 550));
+
+        jTabbedPane2.addTab("                                             Add New Stuff                                       ", jPanel8);
+
+        getContentPane().add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 44, 960, 560));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtStaffidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStaffidActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtStaffidActionPerformed
-
-    private void cbxCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCountryActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxCountryActionPerformed
-
-    private void chkSingleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSingleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkSingleActionPerformed
 
     private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
         // TODO add your handling code here:
@@ -371,13 +692,109 @@ public class Cashier extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnStoreActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void txtStaffidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStaffidActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_txtStaffidActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void cbxCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCountryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxCountryActionPerformed
+
+    private void chkSingleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSingleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkSingleActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnLoad2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoad2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLoad2ActionPerformed
+
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+        // TODO add your handling code here:
+       String name;
+       String gender;
+       int age;
+       String country;
+       String number;
+       String note;
+       
+       note = notebox.getText();
+       number = numberbox.getText();
+       name = namebox.getText();
+       gender = jComboBox1.getSelectedItem().toString();
+       country = cbxCountry1.getSelectedItem().toString();
+       age = Integer.parseInt(agebox.getText());
+       try 
+        {
+            String sen = "INSERT INTO employees (ename ,egender, ec, ephone, eage, enote) VALUES ('"+name+"','"+gender+"','"+country+"','"+number+"','"+age+"','"+note+"')";
+            sss = sos.prepareStatement(sen);
+            sss.execute();
+            JOptionPane.showMessageDialog(null,"Succesful");
+            
+        } catch (Exception e) 
+        {
+          JOptionPane.showMessageDialog(null,e);
+        }
+        table();     
+    }//GEN-LAST:event_addActionPerformed
+
+    private void cbxCountry1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCountry1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxCountry1ActionPerformed
+
+    private void chkSingle1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSingle1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkSingle1ActionPerformed
+
+    private void nameboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameboxActionPerformed
+
+    private void ageboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ageboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ageboxActionPerformed
+
+    private void deletebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletebuttonActionPerformed
+        // TODO add your handling code here:
+        int check = JOptionPane.showConfirmDialog(null,"Do you want to delete?");
+
+        
+        if (check == 0)
+        {
+            String name = namebox.getText();
+            int age = Integer.parseInt(agebox.getText());
+            
+
+            try
+            {
+                String sql = "DELETE FROM employees WHERE ename = '" + name + "' AND eage = '" + age + "'";
+                sss=sos.prepareCall(sql);
+                sss.execute();
+                JOptionPane.showMessageDialog(null,"Deleted");
+            } catch (Exception e)
+            {
+                JOptionPane.showMessageDialog(null,"Error");
+            }
+
+        }
+        table();
+       
+    }//GEN-LAST:event_deletebuttonActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -416,17 +833,47 @@ public class Cashier extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton add;
+    private javax.swing.JTextField agebox;
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnLoad;
+    private javax.swing.JButton btnLoad2;
     private javax.swing.JButton btnReset;
+    private javax.swing.JButton btnReset1;
     private javax.swing.JButton btnStore;
+    private javax.swing.JButton btnStore2;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cbxCountry;
+    private javax.swing.JComboBox<String> cbxCountry1;
     private javax.swing.JCheckBox chkSingle;
+    private javax.swing.JCheckBox chkSingle1;
+    private javax.swing.JToggleButton deletebutton;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -438,18 +885,29 @@ public class Cashier extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField namebox;
+    private javax.swing.JTextArea notebox;
+    private javax.swing.JTextField numberbox;
     private javax.swing.JRadioButton rdbFemale;
     private javax.swing.JRadioButton rdbMale;
     private javax.swing.JTextArea txaNote;
     private javax.swing.JTextField txtFullname;
     private javax.swing.JTextField txtStaffid;
+    private javax.swing.JButton up;
     // End of variables declaration//GEN-END:variables
 }
